@@ -47,7 +47,7 @@ var out = decoder.write(str).finalize();
 The default Base32 variant if no `type` is provided is `"rfc4648"` without
 padding.
 
-# Browser support
+## Browser support
 
 The browser versions of the library may be found under the `dist/` directory.
 The browser files are updated on each versioned release, but not for
@@ -61,6 +61,10 @@ $ npm run karma
 ## Related projects
 
 - [agnoster/base32-js][agnoster]
+
+## License
+
+MIT
 
 [agnoster]: https://github.com/agnoster/base32-js
 [crock32]: http://www.crockford.com/wrmg/base32.html
