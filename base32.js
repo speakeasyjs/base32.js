@@ -53,6 +53,7 @@ crockford.charmap = charmap(crockford.alphabet, crockford.charmap);
  *   @param {string} [type] Supported Base-32 variants are "rfc4648" and
  *     "crockford".
  *   @param {object} [charmap] Override the character map used in decoding.
+ * @constructor
  */
 
 function Decoder (options) {
@@ -161,6 +162,7 @@ Decoder.prototype.finalize = function (str) {
  *   @param {string} [type] Supported Base-32 variants are "rfc4648" and
  *     "crockford".
  *   @param {object} [alphabet] Override the alphabet used in encoding.
+ * @constructor
  */
 
 function Encoder (options) {
