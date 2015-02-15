@@ -28,8 +28,7 @@ $ npm install base32.js
 
 ## Usage
 
-Encoding an array of bytes using [Crockford][crock32], appending a CRC-8
-checksum:
+Encoding an array of bytes using [Crockford][crock32]:
 
 ```js
 var base32 = require("base32.js");
