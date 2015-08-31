@@ -27,6 +27,14 @@ describe("Decoder", function () {
       });
     });
 
+    subject.base32hex.forEach(function (str) {
+      it("should decode base32hex " + str, function () {
+        var decoder = new base32.Decoder({ type: "base32hex" });
+        var decoded = decoder.write(str).finalize();
+        compare(decoded, test);
+      });
+    });
+
   });
 
 });
@@ -55,6 +63,13 @@ describe("Encoder", function () {
     it("should encode crock32 " + buf + " with lower case", function () {
       var test = subject.crock32[0];
       var encoder = new base32.Encoder({ type: "crockford", lc: true });
+      var encoded = encoder.write(buf).finalize();
+      assert.equal(encoded, test.toLowerCase());
+    });
+
+    it("should encode base32hex " + buf + " with lower case", function () {
+      var test = subject.base32hex[0];
+      var encoder = new base32.Encoder({ type: "base32hex", lc: true });
       var encoded = encoder.write(buf).finalize();
       assert.equal(encoded, test.toLowerCase());
     });
