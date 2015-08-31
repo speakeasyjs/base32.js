@@ -47,6 +47,18 @@ var crockford = {
 crockford.charmap = charmap(crockford.alphabet, crockford.charmap);
 
 /**
+ * base32hex
+ * @see {@link https://en.wikipedia.org/wiki/Base32#base32hex}
+ */
+
+var base32hex = {
+  alphabet: "0123456789ABCDEFGHIJKLMNOPQRSTUV",
+  charmap: {}
+};
+
+base32hex.charmap = charmap(base32hex.alphabet, base32hex.charmap);
+
+/**
  * Create a new `Decoder` with the given options.
  *
  * @param {object} [options]
@@ -69,6 +81,9 @@ function Decoder (options) {
         break;
       case "crockford":
         this.charmap = exports.crockford.charmap;
+        break;
+      case "base32hex":
+        this.charmap = exports.base32hex.charmap;
         break;
       default:
         throw new Error("invalid type");
@@ -178,6 +193,9 @@ function Encoder (options) {
         break;
       case "crockford":
         this.alphabet = exports.crockford.alphabet;
+        break;
+      case "base32hex":
+        this.alphabet = exports.base32hex.alphabet;
         break;
       default:
         throw new Error("invalid type");
@@ -291,3 +309,4 @@ exports.Encoder = Encoder;
 exports.charmap = charmap;
 exports.crockford = crockford;
 exports.rfc4648 = rfc4648;
+exports.base32hex = base32hex;
