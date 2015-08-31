@@ -1,9 +1,17 @@
 {
   "name": "base32.js",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Michael Phan-Ba <michael@mikepb.com>",
   "description": "Base 32 encodings for JavaScript",
-  "keywords": ["base32", "crockford", "rfc4648", "encoding", "decoding", "crc"],
+  "keywords": [
+    "base32",
+    "base32hex",
+    "crockford",
+    "rfc2938",
+    "rfc4648",
+    "encoding",
+    "decoding"
+  ],
   "license": "MIT",
   "main": "index.js",
   "browser": "base32.js",
