@@ -1,4 +1,4 @@
-# Base 32 for JavaScript [![Build Status](https://travis-ci.org/mikepb/base32.js.svg)](http://travis-ci.org/mikepb/base32.js)
+# Base 32 for JavaScript [![Build Status](https://travis-ci.org/speakeasyjs/base32.js.svg)](http://travis-ci.org/speakeasyjs/base32.js)
 
 [Wikipedia](https://en.wikipedia.org/wiki/Base32):
 
@@ -18,7 +18,7 @@
 
 ## Documentation
 
-Full documentation at http://mikepb.github.io/base32.js/
+Full documentation at http://speakeasyjs.github.io/base32.js/
 
 ## Installation
 
