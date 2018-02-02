@@ -1,10 +1,11 @@
-/// <reference types="node" />
-import { DecoderOptions } from './base32';
+import './base32';
 
-export * from './base32';
-
-export interface Decoder {
-    finalize(str: string): Buffer
+declare module 'base32.js/browser' {
+    import './base32-browser';
+    export * from './base32';
 }
 
-export function decode(str: string, options: DecoderOptions): Buffer;
+declare module 'base32.js/node' {
+    import './base32-node';
+    export * from './base32';
+}
