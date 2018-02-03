@@ -3,7 +3,7 @@
 /**
  * Generate a character map.
  * @param {string} alphabet e.g. "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"
- * @param {object} mappings map overrides from key to value
+ * @param {CharacterMap} mappings map overrides from key to value
  * @method
  */
 
@@ -13,7 +13,7 @@ var charmap = function (alphabet, mappings) {
     if (!(c in mappings)) mappings[c] = i;
   });
   return mappings;
-}
+};
 
 /**
  * The RFC 4648 base 32 alphabet and character map.
@@ -61,14 +61,15 @@ base32hex.charmap = charmap(base32hex.alphabet, base32hex.charmap);
 /**
  * Create a new `Decoder` with the given options.
  *
- * @param {object} [options]
- *   @param {string} [type] Supported Base-32 variants are "rfc4648" and
- *     "crockford".
- *   @param {object} [charmap] Override the character map used in decoding.
+ * @param {DecoderOptions} [options]
+ *   @param {string} [options.type] Supported Base-32 variants are:
+ *     "rfc4648", "base32hex", and "crockford".
+ *   @param {CharacterMap} [options.charmap] Override the character map used in decoding.
  * @constructor
  */
 
 function Decoder (options) {
+  /** @type ByteArray */
   this.buf = [];
   this.shift = 8;
   this.carry = 0;
@@ -94,7 +95,7 @@ function Decoder (options) {
 }
 
 /**
- * The default character map coresponds to RFC4648.
+ * The default character map corresponds to RFC4648.
  */
 
 Decoder.prototype.charmap = rfc4648.charmap;
@@ -155,7 +156,7 @@ Decoder.prototype.write = function (str) {
  * Finish decoding.
  *
  * @param {string} [str] The final string to decode.
- * @return {Array} Decoded byte array.
+ * @return {ByteArray} Decoded byte array.
  */
 
 Decoder.prototype.finalize = function (str) {
@@ -173,10 +174,11 @@ Decoder.prototype.finalize = function (str) {
 /**
  * Create a new `Encoder` with the given options.
  *
- * @param {object} [options]
- *   @param {string} [type] Supported Base-32 variants are "rfc4648" and
- *     "crockford".
- *   @param {object} [alphabet] Override the alphabet used in encoding.
+ * @param {EncoderOptions} [options]
+ *   @param {string} [options.type] Supported Base-32 variants are:
+ *     "rfc4648", "base32hex", and "crockford".
+ *   @param {string} [options.alphabet] Override the alphabet used in encoding.
+ *   @param {boolean} [options.lc] Use lower-case alphabet.
  * @constructor
  */
 
@@ -207,7 +209,7 @@ function Encoder (options) {
 }
 
 /**
- * The default alphabet coresponds to RFC4648.
+ * The default alphabet corresponds to RFC4648.
  */
 
 Encoder.prototype.alphabet = rfc4648.alphabet;
@@ -215,7 +217,7 @@ Encoder.prototype.alphabet = rfc4648.alphabet;
 /**
  * Encode a byte array, continuing from the previous state.
  *
- * @param {byte[]} buf The byte array to encode.
+ * @param {ByteArray} buf The byte array to encode.
  * @return {Encoder} this
  */
 
@@ -263,7 +265,7 @@ Encoder.prototype.write = function (buf) {
 /**
  * Finish encoding.
  *
- * @param {byte[]} [buf] The final byte array to encode.
+ * @param {ByteArray} [buf] The final byte array to encode.
  * @return {string} The encoded byte array.
  */
 
@@ -282,8 +284,8 @@ Encoder.prototype.finalize = function (buf) {
 /**
  * Convenience encoder.
  *
- * @param {byte[]} buf The byte array to encode.
- * @param {object} [options] Options to pass to the encoder.
+ * @param {ByteArray} buf The byte array to encode.
+ * @param {DecoderOptions} [options] Options to pass to the encoder.
  * @return {string} The encoded string.
  */
 
@@ -295,8 +297,8 @@ exports.encode = function (buf, options) {
  * Convenience decoder.
  *
  * @param {string} str The string to decode.
- * @param {object} [options] Options to pass to the decoder.
- * @return {byte[]} The decoded byte array.
+ * @param {DecoderOptions} [options] Options to pass to the decoder.
+ * @return {ByteArray} The decoded byte array.
  */
 
 exports.decode = function (str, options) {
