@@ -8,7 +8,7 @@ var base32 = require("./base32");
 var finalizeDecode = base32.Decoder.prototype.finalize;
 base32.Decoder.prototype.finalize = function (buf) {
   var bytes = finalizeDecode.call(this, buf);
-  return new Buffer(bytes);
+  return Buffer.from(bytes);
 };
 
 

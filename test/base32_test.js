@@ -80,7 +80,7 @@ describe("Encoder", function () {
 
 function compare (a, b) {
   if (typeof Buffer != "undefined") {
-    b = new Buffer(b);
+    b = Buffer.from(b);
     return assert.strictEqual(b.compare(a), 0);
   }
   assert.deepEqual(a, b);
