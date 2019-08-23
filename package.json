@@ -29,8 +29,7 @@
     "dist": "webpack base32.js dist/base32.js && webpack --optimize-minimize base32.js dist/base32.min.js",
     "doc": "jsdoc -c jsdoc.json"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "jsdoc": "*",
     "karma": "*",
@@ -38,6 +37,7 @@
     "karma-mocha": "*",
     "karma-webpack": "*",
     "mocha": "*",
-    "webpack": "*"
+    "webpack": "*",
+    "webpack-cli": "^3.3.6"
   }
 }
